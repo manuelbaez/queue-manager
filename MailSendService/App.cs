@@ -7,10 +7,11 @@ namespace SendMail
     {
         private readonly QueueServer server;
         public IConfiguration Configuration { get; }
-        public App(IConfiguration configuration,QueueServer server)
+        public App(IConfiguration configuration, QueueServer server)
         {
             Configuration = configuration;
             this.server = server;
+            server.AddMessageConsumer<object>("main", e => { Console.WriteLine(e);});
         }
 
         public void Run()
