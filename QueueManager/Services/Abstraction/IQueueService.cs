@@ -3,8 +3,8 @@ using System;
 
 namespace QueueManager.Services.Abstraction
 {
-    public interface IQueueService 
+    public interface IQueueService
     {
-        void AddMessageConsumer<T>(string routingKey, Action<IQueueMessageHandler,T> handler) where T : class;
+        void AddMessageConsumer<S>(string routingKey, Action<IQueueMessageHandler,S> handler) where S : class;
     }
 }

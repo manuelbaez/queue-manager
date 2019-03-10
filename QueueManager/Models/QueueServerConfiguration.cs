@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QueueManager.ServerConnector.Abstractions;
+using System;
 
 namespace QueueManager.Models
 {

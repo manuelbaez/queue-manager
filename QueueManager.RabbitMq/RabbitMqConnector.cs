@@ -1,11 +1,12 @@
 using QueueManager.Models;
 using QueueManager.ServerConnector.Abstractions;
+using QueueManager.Services.Abstraction;
 using RabbitMQ.Client;
 using System;
 
 namespace QueueManager.RabbitMq
 {
-    public class RabbitMqConnector : IQueueServerConnnector
+    public class RabbitMqConnector<T>: IQueueServerConnnection<T> where T : class, IQueueService
     {
         private IModel channel;
         public RabbitMqConnector(QueueServerConfiguration options)
@@ -16,7 +17,7 @@ namespace QueueManager.RabbitMq
             channel.BasicQos(prefetchSize: 0, prefetchCount: 1, global: false);
         }
 
-        public void AddOrAttachQeueue(QueueConfiguration configuration)
+        public void CreateOrAttachQeueue(QueueConfiguration configuration)
         {
             channel.QueueDeclare(queue: configuration.Name,
                 exclusive: configuration.Exclusive,
@@ -24,12 +25,12 @@ namespace QueueManager.RabbitMq
                 autoDelete: configuration.AutoDelete);
         }
 
-        public void AddQueueListener<T>(string queueName, Action<IQueueMessageHandler, T> handler) where T : class
+        public void AddQueueListener<S>(string queueName, Action<IQueueMessageHandler, S> handler) where S : class
         {
             channel.BasicConsume(
                 queue: queueName,
                 autoAck: false,
-                consumer: new Consumer<T>(channel, handler)
+                consumer: new Consumer<S>(channel, handler)
                 );
         }
 

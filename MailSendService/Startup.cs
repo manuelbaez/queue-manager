@@ -1,9 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 using QueueManager.DependencyInjection;
 using QueueManager.RabbitMq.DependencyInjection;
-using System;
-using System.Threading;
 
 namespace SendMail
 {
@@ -22,7 +21,6 @@ namespace SendMail
         public static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
             services.AddQueueServer<QueueServer>(t => t.UseRabbitMq(configuration.GetQueueServerConnectionParams("local")));
-
         }
 
         public void Start()

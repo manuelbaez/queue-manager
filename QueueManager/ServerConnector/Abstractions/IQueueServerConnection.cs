@@ -1,11 +1,15 @@
 using QueueManager.Models;
+using QueueManager.Services.Abstraction;
 using System;
 
 namespace QueueManager.ServerConnector.Abstractions
 {
-    public interface IQueueServerConnnector : IDisposable
+    public interface IQueueServerConnnection : IDisposable
     {
-        void AddOrAttachQeueue(QueueConfiguration configuration);
-        void AddQueueListener<T>(string queueName, Action<IQueueMessageHandler,T> listener) where T : class;
+        void CreateOrAttachQeueue(QueueConfiguration configuration);
+        void AddQueueListener<T>(string queueName, Action<IQueueMessageHandler, T> listener) where T : class;
+    }
+    public interface IQueueServerConnnection<S> : IQueueServerConnnection where S : class, IQueueService
+    {
     }
 }

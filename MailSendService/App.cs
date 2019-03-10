@@ -19,7 +19,7 @@ namespace SendMail
         {
             Console.WriteLine(Configuration.GetSection("AppSettings:Version").Get<string>());
             server.ConfigureQueue(new QueueConfiguration { Name = "emails", AutoDelete = false, Persistent = true, Exclusive = false });
-            server.AddMessageConsumer<object>("emails", (handler, message) =>
+            server.AddMessageConsumer<string>("emails", (handler, message) =>
             {
                 Console.WriteLine(message);
                 handler.AcknowledgeMessage();

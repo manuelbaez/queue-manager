@@ -6,18 +6,18 @@ using System.Collections.Generic;
 
 namespace QueueManager.Services
 {
-    public abstract class QueueService : IQueueService
+    public abstract class QueueService:IQueueService
     {
-        private readonly IQueueServerConnnector connnection;
+        private readonly IQueueServerConnnection connnection;
 
         public Dictionary<string, Func<object>> Queues { get; set; }
-        public QueueService(IQueueServerConnnector connnection)
+        public QueueService(IQueueServerConnnection connnection)
         {
             this.connnection = connnection;
         }
         public void ConfigureQueue(QueueConfiguration configuration)
         {
-            connnection.AddOrAttachQeueue(configuration);
+            connnection.CreateOrAttachQeueue(configuration);
         }
         public void AddMessageConsumer<T>(string queueName, Action<IQueueMessageHandler, T> handler) where T : class
         {
