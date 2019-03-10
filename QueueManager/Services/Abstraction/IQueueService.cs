@@ -2,8 +2,8 @@
 
 namespace QueueManager.Services.Abstraction
 {
-    public interface IQueueService
+    public interface IQueueService : IDisposable
     {
-        void AddMessageListener<T>(string routingKey, Action<T> handler);
+        void AddMessageConsumer<T>(string routingKey, Action<T> handler) where T : class;
     }
 }
