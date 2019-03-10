@@ -1,16 +1,19 @@
-using System;
-using System.Text;
+using Newtonsoft.Json;
+using QueueManager.ServerConnector.Abstractions;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
+using System;
+using System.Net.Mime;
+using System.Text;
 
-namespace QueueManager.Consumer
+namespace QueueManager.RabbitMq
 {
-    public class BaseConsumer<T> : IBasicConsumer where T : class
+    public class Consumer<T> : IBasicConsumer where T : class
     {
         public IModel Model { get; set; }
-        private Action<T> handler;
+        private Action<IQueueMessageHandler, T> handler;
 
-        public BaseConsumer(IModel channel, Action<T> handler)
+        public Consumer(IModel channel, Action<IQueueMessageHandler, T> handler)
         {
             Model = channel;
             this.handler = handler;
@@ -38,9 +41,11 @@ namespace QueueManager.Consumer
             string exchange, string routingKey,
             IBasicProperties properties, byte[] body)
         {
-            var messageBody = Encoding.UTF8.GetString(body);
-            handler.Invoke(messageBody as T);
-            Model.BasicAck(deliveryTag, false);
+            var contentType= new ContentType((properties.ContentType is null) ? "text/plain" : properties.ContentType);
+            var messageString = Encoding.UTF8.GetString(body);
+            var messageBody = JsonConvert.DeserializeObject<T>(messageString);
+            
+            handler.Invoke(new RabbitMqMessageHandler(Model, deliveryTag, contentType), messageString as T);
         }
 
         public void HandleModelShutdown(object model, ShutdownEventArgs reason)

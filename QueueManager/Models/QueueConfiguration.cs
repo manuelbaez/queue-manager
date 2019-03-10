@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace QueueManager.Models
+﻿namespace QueueManager.Models
 {
-    class QueueConfiguration
+    public class QueueConfiguration
     {
+        public string Name { get; set; }
+        public bool Exclusive { get; set; }
+        public bool Persistent { get; set; }
+        public bool AutoDelete { get; set; }
     }
 }

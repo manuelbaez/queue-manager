@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using QueueManager.DependencyInjection;
+using QueueManager.RabbitMq.DependencyInjection;
 using System;
 using System.Threading;
 

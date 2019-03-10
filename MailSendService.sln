@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailSendService", "MailSendService\MailSendService.csproj", "{3F3A6FEF-7019-46A9-85F1-AA52ACDB60CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MailSendService", "MailSendService\MailSendService.csproj", "{3F3A6FEF-7019-46A9-85F1-AA52ACDB60CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueManager", "QueueManager\QueueManager.csproj", "{021EECD2-A472-48F4-8131-8FF4A24C2EF0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueueManager", "QueueManager\QueueManager.csproj", "{021EECD2-A472-48F4-8131-8FF4A24C2EF0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueueManager.RabbitMq", "QueueManager.RabbitMq\QueueManager.RabbitMq.csproj", "{57DA89D2-E0DC-4B43-86CA-6A0D0FC50AF1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{021EECD2-A472-48F4-8131-8FF4A24C2EF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{021EECD2-A472-48F4-8131-8FF4A24C2EF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{021EECD2-A472-48F4-8131-8FF4A24C2EF0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57DA89D2-E0DC-4B43-86CA-6A0D0FC50AF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57DA89D2-E0DC-4B43-86CA-6A0D0FC50AF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57DA89D2-E0DC-4B43-86CA-6A0D0FC50AF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57DA89D2-E0DC-4B43-86CA-6A0D0FC50AF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

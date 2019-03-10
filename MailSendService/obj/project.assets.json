@@ -1352,6 +1352,19 @@
         "runtime": {
           "bin/placeholder/QueueManager.dll": {}
         }
+      },
+      "QueueManager.RabbitMq/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "QueueManager": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/QueueManager.RabbitMq.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/QueueManager.RabbitMq.dll": {}
+        }
       }
     }
   },
@@ -2039,7 +2052,7 @@
       ]
     },
     "RabbitMQ.Client/5.1.0": {
-      "sha512": "oMXzDw2NLDHYlAYVJs5AHZDGkTsuzmaAPNfHjgkPqq3VfnxAXgsJ643ts6xsdXJftpwPbDAwN5YP65lHm+MiNg==",
+      "sha512": "6TzFS2nlpiqKX7joVM+ViYY+rtHdYLnXkv2aNsXXJXlEbDhgf1iNBUgelPlgQUpKWoL9yUfMpTroNgEljB2HuA==",
       "type": "package",
       "path": "rabbitmq.client/5.1.0",
       "files": [
@@ -4645,6 +4658,11 @@
       "type": "project",
       "path": "../QueueManager/QueueManager.csproj",
       "msbuildProject": "../QueueManager/QueueManager.csproj"
+    },
+    "QueueManager.RabbitMq/1.0.0": {
+      "type": "project",
+      "path": "../QueueManager.RabbitMq/QueueManager.RabbitMq.csproj",
+      "msbuildProject": "../QueueManager.RabbitMq/QueueManager.RabbitMq.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -4657,39 +4675,41 @@
       "Microsoft.Extensions.DependencyInjection >= 2.2.0",
       "Microsoft.Extensions.DependencyInjection.Abstractions >= 2.2.0",
       "Microsoft.NETCore.App >= 2.2.0",
-      "QueueManager >= 1.0.0"
+      "QueueManager.RabbitMq >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "/home/jesus/.nuget/packages/": {},
-    "/usr/share/dotnet/sdk/NuGetFallbackFolder": {}
+    "C:\\Users\\Jesus\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/jesus/Documents/Repos/RabbitMqClient/MailSendService/MailSendService.csproj",
+      "projectUniqueName": "C:\\Users\\Jesus\\Source\\Repos\\RabbitMqSampleApplication\\MailSendService\\MailSendService.csproj",
       "projectName": "MailSendService",
-      "projectPath": "/home/jesus/Documents/Repos/RabbitMqClient/MailSendService/MailSendService.csproj",
-      "packagesPath": "/home/jesus/.nuget/packages/",
-      "outputPath": "/home/jesus/Documents/Repos/RabbitMqClient/MailSendService/obj/",
+      "projectPath": "C:\\Users\\Jesus\\Source\\Repos\\RabbitMqSampleApplication\\MailSendService\\MailSendService.csproj",
+      "packagesPath": "C:\\Users\\Jesus\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Jesus\\Source\\Repos\\RabbitMqSampleApplication\\MailSendService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "/usr/share/dotnet/sdk/NuGetFallbackFolder"
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/home/jesus/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\Jesus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "/home/jesus/Documents/Repos/RabbitMqClient/QueueManager/QueueManager.csproj": {
-              "projectPath": "/home/jesus/Documents/Repos/RabbitMqClient/QueueManager/QueueManager.csproj"
+            "C:\\Users\\Jesus\\Source\\Repos\\RabbitMqSampleApplication\\QueueManager.RabbitMq\\QueueManager.RabbitMq.csproj": {
+              "projectPath": "C:\\Users\\Jesus\\Source\\Repos\\RabbitMqSampleApplication\\QueueManager.RabbitMq\\QueueManager.RabbitMq.csproj"
             }
           }
         }

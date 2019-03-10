@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
+using QueueManager.Models;
 using System;
 
 namespace SendMail
@@ -11,12 +12,18 @@ namespace SendMail
         {
             Configuration = configuration;
             this.server = server;
-            server.AddMessageConsumer<object>("main", e => { Console.WriteLine(e);});
+
         }
 
         public void Run()
         {
             Console.WriteLine(Configuration.GetSection("AppSettings:Version").Get<string>());
+            server.ConfigureQueue(new QueueConfiguration { Name = "emails", AutoDelete = false, Persistent = true, Exclusive = false });
+            server.AddMessageConsumer<object>("emails", (handler, message) =>
+            {
+                Console.WriteLine(message);
+                handler.AcknowledgeMessage();
+            });
         }
     }
 }

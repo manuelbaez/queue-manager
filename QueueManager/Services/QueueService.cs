@@ -1,35 +1,27 @@
 ﻿using QueueManager.Models;
-using RabbitMQ.Client;
+using QueueManager.ServerConnector.Abstractions;
+using QueueManager.Services.Abstraction;
 using System;
 using System.Collections.Generic;
-using QueueManager.Services.Abstraction;
-using QueueManager.Consumer;
 
 namespace QueueManager.Services
 {
     public abstract class QueueService : IQueueService
     {
-      
+        private readonly IQueueServerConnnector connnection;
+
         public Dictionary<string, Func<object>> Queues { get; set; }
-        public QueueService()
+        public QueueService(IQueueServerConnnector connnection)
         {
-           
+            this.connnection = connnection;
         }
-
-        public void AddMessageConsumer<T>(string routingKey, Action<T> handler) where T : class
+        public void ConfigureQueue(QueueConfiguration configuration)
         {
-            channel.QueueDeclare(
-                queue: routingKey);
-            channel.BasicConsume(
-                queue: routingKey,
-                autoAck: false,
-                consumer: new BaseConsumer<T>(channel, handler)
-                );
+            connnection.AddOrAttachQeueue(configuration);
         }
-
-        public void Dispose()
+        public void AddMessageConsumer<T>(string queueName, Action<IQueueMessageHandler, T> handler) where T : class
         {
-            channel.Close();
+            connnection.AddQueueListener(queueName, handler);
         }
     }
 }

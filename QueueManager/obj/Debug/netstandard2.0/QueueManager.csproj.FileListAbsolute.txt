@@ -16,3 +16,12 @@ C:/Users/mdejesus/Source/Repos/MailSendService/QueueManager/obj/Debug/netstandar
 /home/jesus/Documents/Repos/RabbitMqClient/QueueManager/obj/Debug/netstandard2.0/QueueManager.AssemblyInfo.cs
 /home/jesus/Documents/Repos/RabbitMqClient/QueueManager/obj/Debug/netstandard2.0/QueueManager.dll
 /home/jesus/Documents/Repos/RabbitMqClient/QueueManager/obj/Debug/netstandard2.0/QueueManager.pdb
+C:\Users\Jesus\Source\Repos\RabbitMqSampleApplication\QueueManager\obj\Debug\netstandard2.0\QueueManager.csprojAssemblyReference.cache
+C:\Users\Jesus\Source\Repos\RabbitMqSampleApplication\QueueManager\obj\Debug\netstandard2.0\QueueManager.csproj.CoreCompileInputs.cache
+C:\Users\Jesus\Source\Repos\RabbitMqSampleApplication\QueueManager\obj\Debug\netstandard2.0\QueueManager.AssemblyInfoInputs.cache
+C:\Users\Jesus\Source\Repos\RabbitMqSampleApplication\QueueManager\obj\Debug\netstandard2.0\QueueManager.AssemblyInfo.cs
+C:\Users\Jesus\Source\Repos\RabbitMqSampleApplication\QueueManager\obj\Debug\netstandard2.0\QueueManager.dll
+C:\Users\Jesus\Source\Repos\RabbitMqSampleApplication\QueueManager\obj\Debug\netstandard2.0\QueueManager.pdb
+C:\Users\Jesus\Source\Repos\RabbitMqSampleApplication\QueueManager\bin\Debug\netstandard2.0\QueueManager.deps.json
+C:\Users\Jesus\Source\Repos\RabbitMqSampleApplication\QueueManager\bin\Debug\netstandard2.0\QueueManager.dll
+C:\Users\Jesus\Source\Repos\RabbitMqSampleApplication\QueueManager\bin\Debug\netstandard2.0\QueueManager.pdb
