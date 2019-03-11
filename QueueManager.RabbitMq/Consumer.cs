@@ -1,5 +1,6 @@
 using Newtonsoft.Json;
 using QueueManager.RabbitMq.Constants;
+using QueueManager.RabbitMq.Exceptions;
 using QueueManager.ServerConnector.Abstractions;
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
@@ -44,10 +45,14 @@ namespace QueueManager.RabbitMq
             string exchange, string routingKey,
             IBasicProperties properties, byte[] body)
         {
-            var contentType = new ContentType((properties.ContentType is null) ? "text/plain" : properties.ContentType);
+            if (properties.ContentType is null)
+            {
+                throw new NoContentTypeException();
+            }
+            var contentType = new ContentType(properties.ContentType);
             var messageString = Encoding.UTF8.GetString(body);
             object messageBody;
-            switch (contentType.Name)
+            switch (contentType.MediaType)
             {
                 case MimeTypes.Json:
                     messageBody = JsonConvert.DeserializeObject<T>(messageString);
@@ -57,9 +62,11 @@ namespace QueueManager.RabbitMq
                     var messageStream = new MemoryStream(body);
                     messageBody = deserializer.Deserialize(messageStream);
                     break;
-                default:
+                case MimeTypes.PlainText:
                     messageBody = messageString;
                     break;
+                default:
+                    throw new InvalidContentTypeException();
             }
 
             handler.Invoke(new RabbitMqMessageHandler(Model, deliveryTag, contentType), messageBody as T);

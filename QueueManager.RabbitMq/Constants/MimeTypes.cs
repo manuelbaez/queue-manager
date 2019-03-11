@@ -8,5 +8,6 @@ namespace QueueManager.RabbitMq.Constants
     {
         public const string Json = "application/json";
         public const string XML = "application/xml";
+        public const string PlainText = "text/plain";
     }
 }
