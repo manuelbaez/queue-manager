@@ -18,6 +18,7 @@ namespace QueueManager.RabbitMq
             this.model = model;
             ContentType = contentType;
         }
+
         public void AcknowledgeMessage()
         {
             model.BasicAck(MessageDeliveryTag, false);

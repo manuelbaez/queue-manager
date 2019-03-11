@@ -3,25 +3,31 @@ using QueueManager.ServerConnector.Abstractions;
 using QueueManager.Services.Abstraction;
 using System;
 using System.Collections.Generic;
+using System.Net.Mime;
 
 namespace QueueManager.Services
 {
-    public abstract class QueueService:IQueueService
+    public abstract class QueueService : IQueueService
     {
-        private readonly IQueueServerConnnection connnection;
-
+        public IQueueServerConnnection Connection { get; }
         public Dictionary<string, Func<object>> Queues { get; set; }
-        public QueueService(IQueueServerConnnection connnection)
+
+        public QueueService(IQueueServerConnnection connection)
         {
-            this.connnection = connnection;
+            Connection = connection;
         }
         public void ConfigureQueue(QueueConfiguration configuration)
         {
-            connnection.CreateOrAttachQeueue(configuration);
+            Connection.CreateOrAttachQeueue(configuration);
         }
         public void AddMessageConsumer<T>(string queueName, Action<IQueueMessageHandler, T> handler) where T : class
         {
-            connnection.AddQueueListener(queueName, handler);
+            Connection.AddQueueListener(queueName, handler);
+        }
+
+        public void PublishMessage<T>(string destination, string routingKey, T body, ContentType contentType)
+        {
+            Connection.PublishMessage<T>(destination, routingKey, body, contentType);
         }
     }
 }

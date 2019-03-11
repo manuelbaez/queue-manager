@@ -2,7 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using QueueManager.DependencyInjection;
-using QueueManager.RabbitMq.DependencyInjection;
+using QueueManager.RabbitMq.Extensions.DependencyInjection;
 
 namespace SendMail
 {
