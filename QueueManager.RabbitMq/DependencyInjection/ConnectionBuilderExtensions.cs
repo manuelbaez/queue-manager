@@ -18,8 +18,8 @@ namespace QueueManager.RabbitMq.DependencyInjection
                 Uri = new Uri($"{configuration.Protocol}://{configuration.User}:{configuration.Password}@{configuration.Host}:{configuration.Port}"),
                 DegreeOfParallelism = degreeOfParallelism
             };
-            var connection = (IQueueServerConnnection<T>)new RabbitMqConnector<T>(options);
-            configurationBuilder.Services.AddSingleton(_ => connection);
+            var connection = new RabbitMqConnector<T>(options);
+            configurationBuilder.Services.AddSingleton<IQueueServerConnnection<T>> (_ => connection);
         }
     }
 }
