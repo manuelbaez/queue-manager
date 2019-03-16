@@ -5,7 +5,7 @@ using QueueManager.ServerConnector.Abstractions;
 using QueueManager.Services.Abstraction;
 using System;
 
-namespace QueueManager.RabbitMq.DependencyInjection
+namespace QueueManager.RabbitMq.Extensions.DependencyInjection
 {
     public static class ConnectionBuilderExtensions
     {
